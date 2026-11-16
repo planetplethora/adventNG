@@ -272,7 +272,7 @@ textarea::placeholder{color:rgba(62,39,24,.48)}
       <div class="progress"><div id="progressText">Запечатано: 0 из 12</div><div class="bar"><div class="fill" id="progressFill"></div></div></div>
     </div>
     <div class="grid" id="grid"></div>
-    <div class="actions"><button class="btn secondary" id="skipBtn">Пропустить</button><button class="btn secondary" id="resetBtn">Очистить практику и начать заново</button></div>
+    <div class="actions"><button class="btn secondary" id="resetBtn">Очистить практику и начать заново</button></div>
   </div>
 </section>
 
@@ -411,16 +411,6 @@ document.getElementById('viewBackBtn').onclick=showSelect;
 document.getElementById('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(listText());toast('Список желаний скопирован.')}catch(e){toast('Не удалось скопировать автоматически. Можно выделить текст списка вручную.')}};
 document.getElementById('imageBtn').onclick=saveImage;
 
-document.getElementById('skipBtn').onclick=()=>{
-  topics.forEach(t=>{
-    if(!state.wishes[t.id]) {
-      state.wishes[t.id]={id:t.id,title:t.title,short:t.short,wish:'Тестовое желание для конверта «'+t.title+'»',date:new Date().toISOString()};
-    }
-  });
-  save();
-  render();
-  showFinal();
-};
 document.getElementById('resetBtn').onclick=()=>{if(confirm('Очистить все конверты и начать практику заново?')){state={wishes:{}};save();selected=null;render();toast('Практика очищена. Можно начать заново.')}};
 document.getElementById('hintBtn').onclick=e=>{e.preventDefault();toast('Сюда можно добавить ссылку на Шпаргалку 2027.')}
 renderTree();
