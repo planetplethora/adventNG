@@ -509,11 +509,11 @@ textarea::placeholder { color:rgba(62,39,24,.48); }
 .final-actions #hintBtn {
   min-width:min(420px, 100%);
   font-size:19px;
-  order:2;
+  order:1;
 }
 .final-secondary {
   min-width:220px;
-  order:1;
+  order:2;
   background:rgba(255,236,212,.08) !important;
   border-color:rgba(255,225,190,.34) !important;
   box-shadow:inset 0 1px rgba(255,255,255,.12) !important;
@@ -633,136 +633,77 @@ textarea::placeholder { color:rgba(62,39,24,.48); }
   .mini-env { width:40px; height:28px; }
   .light { width:7px; height:7px; }
 }
-
-/* === readability + final tree mobile refinements === */
-#start .overlay{
-  background:
-    linear-gradient(90deg, rgba(8,4,2,.62) 0%, rgba(8,4,2,.46) 20%, rgba(8,4,2,.34) 42%, rgba(8,4,2,.72) 100%),
-    radial-gradient(circle at 18% 74%, rgba(255,170,70,.08) 0 12%, rgba(0,0,0,0) 28%),
-    radial-gradient(circle at 55% 48%, rgba(100,44,18,.04) 0 18%, rgba(10,5,3,.16) 42%, rgba(6,3,2,.62) 100%);
-}
-#start h1,
-#start .brand,
-#start .lead,
-#start .eyebrow,
-#start .btn{
-  text-shadow:0 2px 12px rgba(0,0,0,.55);
-}
-
-#final .bg.final{
-  background-position:left center;
-}
-#final .overlay{
-  background:
-    linear-gradient(90deg, rgba(6,3,2,.20) 0%, rgba(6,3,2,.12) 28%, rgba(6,3,2,.24) 44%, rgba(6,3,2,.52) 100%),
-    radial-gradient(circle at 18% 18%, rgba(255,192,110,.06) 0 12%, rgba(0,0,0,0) 26%),
-    radial-gradient(circle at 58% 48%, rgba(255,170,70,.03) 0 18%, rgba(10,5,3,.08) 45%, rgba(6,3,2,.48) 100%);
-}
-#final .tree-area::before{
-  content:"";
-  position:absolute;
-  left:5%;
-  top:6%;
-  width:36%;
-  height:86%;
-  background:
-    radial-gradient(circle at 50% 8%, rgba(90,118,70,.32) 0 18%, rgba(0,0,0,0) 19%),
-    radial-gradient(circle at 50% 22%, rgba(68,96,53,.42) 0 24%, rgba(0,0,0,0) 25%),
-    radial-gradient(circle at 50% 39%, rgba(58,82,45,.46) 0 30%, rgba(0,0,0,0) 31%),
-    radial-gradient(circle at 50% 58%, rgba(49,70,38,.50) 0 35%, rgba(0,0,0,0) 36%),
-    radial-gradient(circle at 50% 80%, rgba(40,58,31,.55) 0 42%, rgba(0,0,0,0) 43%);
-  filter:blur(1px) drop-shadow(0 10px 18px rgba(0,0,0,.28));
-  opacity:.72;
-  z-index:0;
-  pointer-events:none;
-}
-#final .tree-area::after{
-  content:"";
-  position:absolute;
-  left:20.5%;
-  bottom:2%;
-  width:8%;
-  height:13%;
-  border-radius:12px;
-  background:linear-gradient(180deg, rgba(92,52,26,.78), rgba(58,28,13,.92));
-  opacity:.65;
-  z-index:0;
-}
-#final .mini-env,
-#final .light{
-  z-index:1;
-}
-
-@media (max-width: 980px){
-  #start .overlay{
-    background:
-      linear-gradient(180deg, rgba(8,4,2,.30) 0%, rgba(8,4,2,.14) 24%, rgba(8,4,2,.38) 45%, rgba(8,4,2,.68) 100%),
-      linear-gradient(90deg, rgba(8,4,2,.58) 0%, rgba(8,4,2,.34) 24%, rgba(8,4,2,.26) 45%, rgba(8,4,2,.72) 100%);
-  }
-  #final .bg.final{
-    background-position:left top;
-  }
-  #final .tree-area{
-    width:100%;
-    height:320px;
-    top:0;
-    left:0;
-  }
-  #final .tree-area::before{
-    left:4%;
-    top:4%;
-    width:42%;
-    height:84%;
-    opacity:.78;
-  }
-  #final .tree-area::after{
-    left:21%;
-    bottom:4%;
-    width:8%;
-    height:11%;
-  }
-  #final .final-content{
-    width:100%;
-    margin:0 auto;
-    padding-top:300px;
-    position:relative;
-    z-index:3;
-  }
-}
-
-@media (max-width: 680px){
-  #start h1{
-    text-shadow:0 2px 16px rgba(0,0,0,.68);
-  }
-  #start .lead,
-  #start .brand,
-  #start .eyebrow{
-    text-shadow:0 2px 12px rgba(0,0,0,.66);
-  }
-  #final .tree-area{
-    height:330px;
-  }
-  #final .tree-area::before{
-    left:2%;
-    top:2%;
-    width:48%;
-    height:86%;
-  }
-  #final .tree-area::after{
-    left:23%;
-  }
-  #final .final-content{
-    padding-top:315px;
-  }
-  .temp-skip{
-    right:10px;
-    bottom:92px;
-    padding:9px 12px;
-    font-size:12px;
-  }
-}
-
 </style>
+
+<style id="clean-final-tree-desktop-v1">
+/* Чистая правка финала: без дополнительных скриптов и без конфликтующих старых фиксов */
+@media (min-width: 901px) {
+  #final .tree-area {
+    position:absolute !important;
+    left:0 !important;
+    top:0 !important;
+    width:34% !important;
+    height:100% !important;
+    margin:0 !important;
+    z-index:2 !important;
+    pointer-events:none !important;
+    overflow:visible !important;
+  }
+  #final .mini-env {
+    width:72px !important;
+    height:50px !important;
+    z-index:2 !important;
+    filter:drop-shadow(0 8px 12px rgba(0,0,0,.34)) !important;
+  }
+  #final .light {
+    width:8px !important;
+    height:8px !important;
+    z-index:1 !important;
+  }
+  #final .final-content {
+    position:relative !important;
+    z-index:3 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  #final .tree-area {
+    position:absolute !important;
+    left:0 !important;
+    top:0 !important;
+    width:46% !important;
+    height:100% !important;
+    margin:0 !important;
+    z-index:2 !important;
+    pointer-events:none !important;
+    overflow:visible !important;
+  }
+  #final .mini-env {
+    width:42px !important;
+    height:29px !important;
+  }
+  #final .light {
+    width:7px !important;
+    height:7px !important;
+  }
+}
+
+@media (max-width: 680px) {
+  #final .tree-area {
+    width:52% !important;
+    height:62vh !important;
+    min-height:430px !important;
+  }
+  #final .mini-env {
+    width:34px !important;
+    height:24px !important;
+  }
+  #final .final-content {
+    padding-top:clamp(430px, 58vh, 560px) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -785,7 +726,7 @@ textarea::placeholder { color:rgba(62,39,24,.48); }
           <p>Здесь всё устроено иначе: каждый день вы выбираете один конверт и пишете для него одно желание. На практику уйдёт около трёх минут.</p>
         </div>
         <div class="actions">
-          <button class="btn" id="startBtn">Написать желание</button>
+          <button class="btn" id="startBtn">Начать практику</button>
         </div>
       </div>
     </div>
@@ -972,8 +913,7 @@ function toast(message) {
 }
 function updateStartButton() {
   const btn = document.getElementById('startBtn');
-  const n = doneCount();
-  btn.textContent = n > 0 ? 'Продолжить практику' : 'Написать желание';
+  if (btn) btn.textContent = 'Начать практику';
 }
 function renderProgress() {
   const n = doneCount();
@@ -1084,22 +1024,100 @@ function listText() {
 function placeFinalDecor() {
   const area = document.getElementById('treeArea');
   area.innerHTML = '';
-  const envs = [[17,18],[29,25],[12,34],[33,39],[22,49],[8,55],[31,60],[17,66],[27,72],[10,78],[34,82],[20,88]];
-  const rots = [-8,6,10,-6,4,-10,8,-4,9,-7,5,-5];
+
+  const isMobile = window.innerWidth <= 680;
+  const isTablet = window.innerWidth > 680 && window.innerWidth <= 900;
+
+  // Компьютер: 10 писем. Это прежняя расстановка, но без двух проблемных:
+  // - без письма, которое уходило мимо ёлки;
+  // - без письма, которое попадало на большую игрушку.
+  const envDesktop = [
+    [20, 11],
+    [41, 19],
+    [14, 33],
+    [43, 40],
+    [18, 50],
+    [48, 59],
+    [19, 67],
+    [14, 81],
+    [30, 88],
+    [47, 95]
+  ];
+
+  // Мобильную версию потом отдельно подгоним по скрину.
+  const envTablet = [
+    [48, 12],
+    [32, 25],
+    [60, 34],
+    [43, 43],
+    [25, 52],
+    [56, 60],
+    [66, 74],
+    [29, 82],
+    [50, 89],
+    [70, 94]
+  ];
+
+  const envMobile = [
+    [46, 12],
+    [31, 26],
+    [58, 35],
+    [42, 45],
+    [25, 55],
+    [55, 64],
+    [62, 73],
+    [30, 82],
+    [48, 90],
+    [66, 96]
+  ];
+
+  const lightDesktop = [
+    [31, 8], [47, 14],
+    [20, 22], [37, 28],
+    [25, 38], [49, 45],
+    [22, 54], [40, 60],
+    [52, 68], [24, 76],
+    [37, 84], [23, 92]
+  ];
+
+  const lightTablet = [
+    [42, 9], [59, 16],
+    [28, 23], [54, 30],
+    [37, 39], [66, 47],
+    [23, 52], [50, 59],
+    [67, 68], [31, 76],
+    [55, 83], [36, 91]
+  ];
+
+  const lightMobile = [
+    [40, 10], [57, 18],
+    [28, 25], [53, 33],
+    [36, 43], [64, 51],
+    [24, 57], [48, 65],
+    [62, 74], [32, 83],
+    [52, 91]
+  ];
+
+  const envs = isMobile ? envMobile : (isTablet ? envTablet : envDesktop);
+  const lights = isMobile ? lightMobile : (isTablet ? lightTablet : lightDesktop);
+  const rots = [-8, 7, -6, 5, -7, 6, -5, 7, -6, 5];
+
   envs.forEach((p, i) => {
     const e = document.createElement('div');
     e.className = 'mini-env';
     e.style.left = p[0] + '%';
     e.style.top = p[1] + '%';
-    e.style.transform = `rotate(${rots[i]}deg)`;
+    e.style.transform = `translate(-50%, -50%) rotate(${rots[i]}deg)`;
     area.appendChild(e);
   });
-  const lights = [[21,15],[28,20],[16,29],[34,34],[21,43],[10,50],[33,55],[18,61],[28,66],[12,73],[35,77],[20,84],[26,89],[14,90],[31,92]];
-  lights.forEach(p => {
+
+  lights.forEach((p, i) => {
     const l = document.createElement('div');
     l.className = 'light';
     l.style.left = p[0] + '%';
     l.style.top = p[1] + '%';
+    l.style.transform = 'translate(-50%, -50%)';
+    l.style.animationDelay = (i * 0.14) + 's';
     area.appendChild(l);
   });
 }
