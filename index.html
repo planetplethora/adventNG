@@ -704,6 +704,100 @@ textarea::placeholder { color:rgba(62,39,24,.48); }
 }
 </style>
 
+
+<style id="final-buttons-order-fix">
+.final-actions #hintBtn {
+  order:2 !important;
+  width:min(520px, 100%) !important;
+  min-width:min(420px, 100%) !important;
+}
+.final-actions .final-secondary {
+  order:1 !important;
+  min-width:220px !important;
+}
+@media (max-width:560px) {
+  .final-actions {
+    display:flex !important;
+    flex-direction:column !important;
+  }
+  .final-actions .final-secondary,
+  .final-actions #hintBtn {
+    width:min(320px, 100%) !important;
+  }
+}
+</style>
+
+
+<style id="mobile-final-tree-adaptation-v2">
+/* Мобильный финал: отдельная верхняя зона с кропом на ёлку. Десктоп не трогаем. */
+@media (max-width:900px) {
+  #final .tree-area {
+    position:relative !important;
+    width:100% !important;
+    height:440px !important;
+    min-height:440px !important;
+    left:auto !important;
+    top:auto !important;
+    margin:0 0 14px 0 !important;
+    z-index:2 !important;
+    overflow:hidden !important;
+    background-size:cover !important;
+    background-position:left center !important;
+    background-repeat:no-repeat !important;
+    border-radius:0 0 28px 28px !important;
+    box-shadow:inset 0 -80px 80px rgba(8,4,2,.55);
+  }
+  #final .final-content {
+    width:min(700px,100%) !important;
+    margin:0 auto !important;
+    padding-top:18px !important;
+    position:relative !important;
+    z-index:3 !important;
+  }
+  #final .mini-env {
+    width:48px !important;
+    height:34px !important;
+  }
+  #final .light {
+    width:7px !important;
+    height:7px !important;
+  }
+}
+@media (max-width:680px) {
+  #final .tree-area {
+    height:405px !important;
+    min-height:405px !important;
+    background-position:left center !important;
+  }
+  #final .mini-env {
+    width:38px !important;
+    height:27px !important;
+  }
+  #final .light {
+    width:6px !important;
+    height:6px !important;
+  }
+  .temp-skip {
+    top:94px !important;
+    right:12px !important;
+    bottom:auto !important;
+    z-index:90 !important;
+    padding:9px 12px !important;
+    font-size:12px !important;
+  }
+}
+</style>
+
+
+<style id="desktop-final-letters-bigger-v2">
+@media (min-width: 901px) {
+  #final .mini-env {
+    width:76px !important;
+    height:53px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -1028,6 +1122,13 @@ function placeFinalDecor() {
   const isMobile = window.innerWidth <= 680;
   const isTablet = window.innerWidth > 680 && window.innerWidth <= 900;
 
+  const finalBg = document.querySelector('#final .bg.final');
+  if (window.innerWidth <= 900 && finalBg) {
+    area.style.backgroundImage = getComputedStyle(finalBg).backgroundImage;
+  } else {
+    area.style.backgroundImage = '';
+  }
+
   // Компьютер: 10 писем. Это прежняя расстановка, но без двух проблемных:
   // - без письма, которое уходило мимо ёлки;
   // - без письма, которое попадало на большую игрушку.
@@ -1046,29 +1147,29 @@ function placeFinalDecor() {
 
   // Мобильную версию потом отдельно подгоним по скрину.
   const envTablet = [
-    [48, 12],
-    [32, 25],
-    [60, 34],
-    [43, 43],
-    [25, 52],
-    [56, 60],
-    [66, 74],
-    [29, 82],
-    [50, 89],
-    [70, 94]
+    [25, 12],
+    [43, 19],
+    [17, 31],
+    [37, 40],
+    [22, 51],
+    [42, 60],
+    [18, 70],
+    [36, 79],
+    [23, 88],
+    [41, 96]
   ];
 
   const envMobile = [
-    [46, 12],
-    [31, 26],
-    [58, 35],
-    [42, 45],
-    [25, 55],
-    [55, 64],
-    [62, 73],
-    [30, 82],
-    [48, 90],
-    [66, 96]
+    [26, 12],
+    [43, 20],
+    [18, 32],
+    [38, 42],
+    [23, 53],
+    [42, 62],
+    [19, 72],
+    [36, 81],
+    [24, 90],
+    [41, 97]
   ];
 
   const lightDesktop = [
@@ -1081,21 +1182,17 @@ function placeFinalDecor() {
   ];
 
   const lightTablet = [
-    [42, 9], [59, 16],
-    [28, 23], [54, 30],
-    [37, 39], [66, 47],
-    [23, 52], [50, 59],
-    [67, 68], [31, 76],
-    [55, 83], [36, 91]
+    [20, 10], [36, 16], [48, 24],
+    [18, 34], [38, 42],
+    [22, 54], [45, 62],
+    [19, 73], [38, 84], [27, 94]
   ];
 
   const lightMobile = [
-    [40, 10], [57, 18],
-    [28, 25], [53, 33],
-    [36, 43], [64, 51],
-    [24, 57], [48, 65],
-    [62, 74], [32, 83],
-    [52, 91]
+    [21, 11], [37, 18], [48, 26],
+    [18, 36], [38, 44],
+    [22, 56], [44, 64],
+    [19, 74], [37, 85], [27, 95]
   ];
 
   const envs = isMobile ? envMobile : (isTablet ? envTablet : envDesktop);
